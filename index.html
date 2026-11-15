@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+  AstraVital - Crew Health Monitor (prototype)
+  2026 NASA Space Apps Challenge - challenge: "Create Health Monitoring
+  Software for Astronauts on Space Missions" (Mumbai Local Event).
+  Non-clinical demonstration software. Not a medical device. No diagnosis.
+  AI/SI acknowledgment: generated with AI assistance; human review pending before submission.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AstraVital - crew health self-tracking prototype for long space missions. Non-clinical demo; illustrative terrestrial reference bands with cited sources.">
+<title>AstraVital - Crew Health Monitor</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo" aria-hidden="true">+</span>
+    <div>
+      <h1>AstraVital</h1>
+      <p class="tagline">Crew health self-tracking for long missions</p>
+    </div>
+  </div>
+  <div class="env-picker">
+    <label for="env">Mission environment</label>
+    <select id="env"></select>
+    <p id="envInfo" class="env-info"></p>
+  </div>
+  <div id="overall" class="overall" aria-live="polite"></div>
+</header>
+
+<div id="disclaimer" class="disclaimer" role="note"></div>
+<div id="alerts" class="alerts" aria-live="polite"></div>
+
+<main>
+  <section class="panel checkin" id="checkinPanel">
+    <h2>Daily check-in</h2>
+    <p class="muted" id="checkinHint"></p>
+    <p class="muted" id="lastSaved"></p>
+    <form id="checkinForm"></form>
+  </section>
+
+  <section class="panel bodymap-panel">
+    <h2>Body systems</h2>
+    <p class="muted">Tap a region to see its indicators and what they mean.</p>
+    <div class="bodymap-wrap">
+      <svg id="bodymap" viewBox="0 0 200 400" role="img" aria-label="Clickable human body map"></svg>
+      <div id="regionDetail" class="region-detail"><p class="muted">No region selected.</p></div>
+    </div>
+  </section>
+
+  <section class="panel cards-panel">
+    <h2>Latest readings <span id="tagCards" class="sample-tag">SAMPLE DATA</span></h2>
+    <div id="cards" class="cards"></div>
+  </section>
+
+  <section class="panel charts-panel">
+    <h2>Trends <span id="tagCharts" class="sample-tag">SAMPLE DATA</span></h2>
+    <p class="muted">Color bands: green = within the cited reference range, yellow = outside reference (re-check & log), red = urgent band per the cited source. Tap a card above to focus its chart.</p>
+    <div id="charts" class="charts"></div>
+  </section>
+
+  <section class="panel guidance-panel">
+    <h2>Guidance &amp; countermeasures</h2>
+    <div id="guidance"></div>
+  </section>
+
+  <section class="panel gamification">
+    <h2>Mission routine</h2>
+    <p class="muted">Badges reward showing up and logging honestly - never your readings. Always report symptoms; logging a rough day is a win here.</p>
+    <div id="streak" class="streak"></div>
+    <div id="badges" class="badges"></div>
+  </section>
+
+  <section class="panel log-panel">
+    <h2>Check-in history <span id="tagLog" class="sample-tag">SAMPLE DATA</span></h2>
+    <div id="log"></div>
+    <button id="resetDemo" class="ghost" type="button">Reset demo data</button>
+  </section>
+</main>
+
+<footer>
+  <p><strong>Prototype for the 2026 NASA Space Apps Challenge.</strong> Not a medical device; no diagnosis, treatment, or fitness-for-duty output. Reference ranges are illustrative and terrestrial (each indicator cites its source). Spaceflight context: NASA Human Research Program
+  (<a href="https://www.nasa.gov/hrp/hazards/">5 Hazards</a>,
+  <a href="https://www.nasa.gov/hrp/risks/">Risks</a>). Built with AI assistance.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
